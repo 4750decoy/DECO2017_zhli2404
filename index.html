@@ -20,12 +20,16 @@
 	
 	<div class='task' id='pomodoro' onMouseOver="hide('time-container','stopwatch')" onMouseOut="hide('stopwatch','time-container'	)" >
 		<div  id='time-container'>
-			<p id='clock'></p>
+			<p class = 'cardtime' id='houre'></p>
+			<p class = 'break' id='break1'>:</p>
+			<p class = 'cardtime' id='minute'></p>
+			<p class = 'break' id='break2'>:</p>
+			<p class = 'cardtime' id='second'></p>
 		</div>
 
 		<div id ='stopwatch'>
-			<div id = 'watch'>
-			</div>
+			<div id = 'watch1' onclick="acton('watch1','watch2')"></div>
+			<div id = 'watch2' onclick="acton('watch2','watch1')"></div>
 		</div>
 	</div>
 	

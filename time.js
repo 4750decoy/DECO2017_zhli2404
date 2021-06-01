@@ -17,7 +17,9 @@ function getTime(){
 		S = '0'+S;
 	};
 	var time = H+' : '+M+' : '+S;
-	document.getElementById("clock").innerHTML = time;
+	document.getElementById("houre").innerHTML = H;
+	document.getElementById("minute").innerHTML = M;
+	document.getElementById("second").innerHTML = S;
 }
 
 

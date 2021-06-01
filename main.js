@@ -24,4 +24,9 @@ function hide(id1,id2){
 	document.getElementById(id2).style.display = 'block';
 }
 
-
+function acton(id1,id2){
+	document.getElementById(id1).style.background = 'rgba(0,0,0,1)';
+	document.getElementById(id1).style.borderRadius = '15%';
+	document.getElementById(id2).style.background = 'rgba(0,0,0,0.5)';
+	document.getElementById(id2).style.borderRadius = '50%';
+}
