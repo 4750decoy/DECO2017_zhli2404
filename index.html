@@ -18,13 +18,13 @@
 		</ul>
 	</div>
 	
-	<div class='task' id='pomodoro' onMouseOver="hide('time-container')">
+	<div class='task' id='pomodoro' onMouseOver="hide('time-container','stopwatch')" onMouseOut="hide('stopwatch','time-container')" >
 		<p>Timer</p>
 		<div  id='time-container'>
 			<p id='clock'></p>
 		</div>
 		
-		<div class='task' id ='stopwatch'>
+		<div id ='stopwatch'>
 			<p>this is the time</p>
 		</div>
 		
