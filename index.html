@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DECO2017-A3-zhli2404</title>
+
+<link href="style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+	<div id='Nav'>
+		<ul>
+			<li><a id='home' href='#pomodoro' 	onclick ="changebox('pomodoro')">Timer</a></li>
+			<li><a id='home' href='#KanBan'		onclick ="changebox('KanBan')">KanBan Board</a></li>
+			<li><a id='home' href='#Reading'	onclick ="changebox('Reading')">Reading List</a></li>
+			<li><a id='home' href='#Music'		onclick ="changebox('Music')">Music Player</a></li>
+		</ul>
+	</div>
+	
+	<div class='task' id='pomodoro'>
+		<p>Timer</p>
+		<div  id='time-container'>
+			<p id='clock'></p>
+		</div>
+	</div>
+	
+	<div class='task' id='KanBan'>
+		<p>KanBan</p>
+	</div>
+
+	<div class='task' id='Reading'>
+		<p>Reading</p>
+	</div>
+	
+	<div class='task' id='Music'>
+		<p>Music</p>
+	</div>
+<script src="main.js"></script>
+</body>
+</html>
