@@ -13,10 +13,22 @@
 /*			Make Sure Every Subelement Is Aligned Center 		*/
 body{
 	text-align:center;
-    background:white;
+    background-image:linear-gradient(125deg,#74ebd5,#ACB6E5,#8360c3,#2ebf91);
+	background-size:400%;
+	animation:bgcolor 60s infinite;			/*   This is studied from online tutorial at address https://www.bilibili.com/video/BV1St411P7ef?t=45 */
 }
 
-
+@keyframes bgcolor{
+	0%{
+		background-position: 0% 50%;
+	}
+	50%{
+		background-position: 100% 50%;
+	}
+	100%{
+		background-position: 0% 50%;
+	}
+}
 
 /* 			Navigation is fixed position with every <a> element aligned center 		*/
 #Nav{
@@ -104,16 +116,28 @@ body{
 
 
 
+
 /*		Define pomodoro default block and others none to show timer first 		*/
 /*      Timer      */
 #pomodoro{
+	background:rgba(255,255,255,0.50);
 	display:block;
 	transition: 0.6s;
+	 
+}
+
+
+#pomodoro::before{
+	content:'';
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	filter:blur(5px);
 }
 
 #time-container{
 	border-radius:15px;
-	background:white;
 	text-align:center;
 	height:50px;
 	width:220px;
@@ -140,9 +164,25 @@ body{
 	margin-top:100px;
 }
 
+#watch{
+	height:100px;
+	width:100px;
+	background:black;
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:50px 50px 0px 50px;
+	border-radius:50%;
+	transition:0.6s;
+}
 
-
-
+#watch:hover{
+	border-radius:0%;
+	width:200px;
+}
 
 
 
