@@ -7,22 +7,6 @@ window.addEventListener('scroll',function(){
 })
 
 
-//  Get time in xx:xx:xx format  //
-
-function getTime(){
-	var t = new Date();
-	var H = String(t.getHours());
-	var M = String(t.getMinutes());
-	var S = String(t.getSeconds());
-	var time = H+' : '+M+' : '+S;
-	document.getElementById("clock").innerHTML = time;
-}
-
-
-//  Refresh every 1 second  //
-window.setInterval('getTime()',100);
-
-
 //  hide other boxs  //
 function changebox(id){
 	var box = document.getElementById(id);

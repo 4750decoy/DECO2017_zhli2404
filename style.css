@@ -79,6 +79,13 @@ body{
 	color:aqua
 }
 
+
+
+
+
+
+
+
 /*		Define all task class 		*/
 .task{
 	position:relative;
@@ -92,7 +99,13 @@ body{
 
 
 
+
+
+
+
+
 /*		Define pomodoro default block and others none to show timer first 		*/
+/*      Timer      */
 #pomodoro{
 	display:block;
 	transition: 0.6s;
@@ -119,12 +132,24 @@ body{
 	text-shadow:gray 1px 2px 5px;
 }
 #pomodoro:hover{
-	box-shadow:0px 0px 10px 0.1px red;
+	box-shadow:0px 0px 10px 0.1px green;
 }
 
 #stopwatch{
-	display:none;
+	display:none;	
+	margin-top:100px;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 #KanBan{
 	display:none;
