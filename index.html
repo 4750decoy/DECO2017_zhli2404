@@ -11,23 +11,34 @@
 <body>
 	<div id='Nav'>
 		<ul>
-			<li><a id='home' href='#pomodoro' 	onclick ="changebox('pomodoro')">Timer</a></li>
+			<li><a id='home' href='#timer' 	onclick ="changebox('timer')">Timer</a></li>
 			<li><a id='home' href='#KanBan'		onclick ="changebox('KanBan')">KanBan Board</a></li>
 			<li><a id='home' href='#Reading'	onclick ="changebox('Reading')">Reading List</a></li>
 			<li><a id='home' href='#Music'		onclick ="changebox('Music')">Music Player</a></li>
 		</ul>
 	</div>
 	
-	<div class='task' id='pomodoro' onMouseOver="hide('time-container','stopwatch')" onMouseOut="hide('stopwatch','time-container'	)" >
-		<div  id='time-container'>
-			<p class = 'cardtime' id='houre'></p>
-			<p class = 'break' id='break1'>:</p>
-			<p class = 'cardtime' id='minute'></p>
-			<p class = 'break' id='break2'>:</p>
-			<p class = 'cardtime' id='second'></p>
+	<div class='task' id='timer' onMouseOver="hide('inactive','active')" onMouseOut="hide('active','inactive')" >
+		<div  id='inactive'>
+			<p class = 'cardtime' 	id='hour'></p>
+			<p class = 'break' 		id='break1'>:</p>
+			<p class = 'cardtime' 	id='minute'></p>
+			<p class = 'break' 		id='break2'>:</p>
+			<p class = 'cardtime' 	id='second'></p>
 		</div>
 
-		<div id ='stopwatch'>
+		<div id ='active'>
+			<div  id='inactive_a'>
+				<p class = 'cardtime' 	id='hour_s'></p>
+				<p class = 'break' 		id='break1_s'>:</p>
+				<p class = 'cardtime' 	id='minute_s'></p>
+				<p class = 'break' 		id='break2_s'>:</p>
+				<p class = 'cardtime' 	id='second_s'></p>
+			</div>
+			<div id = 'setting'>
+				<input>Hour
+				<input>Minute
+			</div>
 			<div id = 'watch1' onclick="acton('watch1','watch2')"></div>
 			<div id = 'watch2' onclick="acton('watch2','watch1')"></div>
 		</div>
