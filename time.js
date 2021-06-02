@@ -1,8 +1,15 @@
-// JavaScript Document
+// JavaScript Document //
 let initH = 0;
 let initM = 0;
 let initS = 0;
 let incre = 0;
+
+let pomoS = 15;
+let pomoO = 5;
+let pomoB = 10;
+let enSession = 20;
+let decre = 0;
+let initRound = 4;
 //  Get time in xx:xx:xx format  //
 
 function getTime(){
@@ -54,42 +61,65 @@ function timeStart(){
 	document.getElementById("second_s").innerHTML = S;
 }
 
-function turnOn(){
-	incre = 1;
-}
 
-function turnOff(){
-	incre = 0;
-}
-
-function reset(){
-	initH = 0;
-	initM = 0;
-	initS = 0;
-	incre = 0;
-}
-
-function setWatch(id1,id2){
+function setWatch(id1,id2,id3){
 	var t = new Date();
-	var H = document.getElementById(id1).value;
-	var M = document.getElementById(id2).value;
-	if(H > 24 || H < 0){
-		alert('Value Range 0-24')
+	pomoS = document.getElementById(id1).value;
+	pomoO = document.getElementById(id2).value;
+	pomoB = document.getElementById(id3).value;
+	enSession = Number(pomoS) + Number(pomoO);
+	if(pomoS > 300 || pomoS < 10){
+		alert('Value Range 10-300')
 	}
-	if(M > 60 || M < 0){
-		alert('Value Range 0-60')
+	if(pomoO > 30 || pomoO < 5){
+		alert('Value Range 5-30')
 	}
-	if (H.length<2){
-		H = '0'+H;
+	if(pomoB > 120 || pomoB < 20){
+		alert('Value Range 20-120')
+	}
+	if (pomoS.length<2){
+		pomoS = '0'+pomoS;
 	};
-	if (M.length<2){
-		M = '0'+M;
+	if (pomoO.length<2){
+		pomoO = '0'+pomoO;
 	};
-	document.getElementById("hour_s").innerHTML = H;
-	document.getElementById("minute_s").innerHTML = M;
-	document.getElementById("second_s").innerHTML = '00';
+	if (pomoB.length<2){
+		pomoB = '0'+pomoB;
+	};
+	document.getElementById("time_p").innerHTML = pomoS;
 }
 
+function timeReduce(){
+	if (enSession == 00){
+		if(initRound > 1){
+			initRound -= 1;
+			enSession = Number(pomoS)+Number(pomoO);
+			document.getElementById('time_p').style.background = 'red';
+		}
+		else if(initRound == 1){
+			initRound -= 1;
+			enSession = Number(pomoB);
+			document.getElementById('time_p').style.background = 'green'
+		}
+		else if(initRound == 0){
+			alert('Session End. Congrates!');
+			document.getElementById('time_p').style.background = 'red';
+			pomoReset();
+		}
+	}
+	if (initRound > 0 && enSession > Number(pomoO)){
+		document.getElementById("time_p").innerHTML = enSession - Number(pomoO);
+	}
+	if (initRound > 0 && enSession <= Number(pomoO)){
+		document.getElementById('time_p').style.background = 'orange';
+		document.getElementById("time_p").innerHTML = enSession;
+	}
+	if (initRound == 0){
+		document.getElementById("time_p").innerHTML = enSession;
+	}
+	enSession -= decre;
+	document.getElementById('round_p').innerHTML = 'x'+String(initRound)+' LEFT';
+}
 
 
 
@@ -103,5 +133,55 @@ function setTime(){
 	document.getElementById("second_s").innerHTML = S;
 }
 
+
+
+
+function turnOn(){
+	incre = 1;
+	document.getElementById('stopB').style.background = 'orange';
+	document.getElementById('stopB').innerHTML = 'On';
+}
+
+function turnOff(){
+	incre = 0;
+	document.getElementById('stopB').style.background = 'lightgreen';
+	document.getElementById('stopB').innerHTML = 'Start';
+}
+
+function reset(){
+	initH = 0;
+	initM = 0;
+	initS = 0;
+	incre = 0;
+	document.getElementById('stopB').style.background = 'lightgreen';
+	document.getElementById('stopB').innerHTML = 'Start';
+}
+
+
+function pomoStart(){
+	decre = 1;
+	document.getElementById('startP').style.background = 'orange';
+	document.getElementById('startP').innerHTML = 'On';
+
+}
+
+function pomoStop(){
+	decre = 0;
+	document.getElementById('startP').style.background = 'lightgreen';
+	document.getElementById('startP').innerHTML = 'Start';
+}
+
+function pomoReset(){
+	pomoS = 25;
+	pomoO = 5;
+	pomoB = 30;
+	enSession = 30;
+	decre = 0;
+	initRound = 4;
+	document.getElementById('startP').style.background = 'lightgreen';
+	document.getElementById('startP').innerHTML = 'Start';
+}
+
+window.setInterval('timeReduce()',100)
 window.setInterval('getTime()',1000);
 window.setInterval('timeStart()',1000);

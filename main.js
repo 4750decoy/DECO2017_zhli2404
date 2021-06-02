@@ -10,7 +10,7 @@ window.addEventListener('scroll',function(){
 //  hide other boxs  //
 function changebox(id){
 	var box = document.getElementById(id);
-	document.getElementById('timer').style.display = 'none';
+	document.getElementById('Timer').style.display = 'none';
 	document.getElementById('KanBan').style.display = 'none';
 	document.getElementById('Reading').style.display = 'none';
 	document.getElementById('Music').style.display = 'none';

@@ -11,15 +11,15 @@
 <body>
 	<div id='Nav'>
 		<ul>
-			<li><a id='home' href='#timer' 		onclick ="changebox('timer')">Timer</a></li>
+			<li><a id='home' href='#Timer' 		onclick ="changebox('Timer')">Timer</a></li>
 			<li><a id='home' href='#KanBan'		onclick ="changebox('KanBan')">KanBan Board</a></li>
 			<li><a id='home' href='#Reading'	onclick ="changebox('Reading')">Reading List</a></li>
 			<li><a id='home' href='#Music'		onclick ="changebox('Music')">Music Player</a></li>
 		</ul>
 	</div>
 	
-	<div class='task' id='timer' onMouseOver="hide('inactive','active')" onMouseOut="hide('active','inactive')" >
-		<div  id='inactive'>
+	<div class='task' id='timer' onMouseOver="hide('inactive_timerS','active')" onMouseOut="hide('active','inactive_timerS')" >
+		<div id='inactive_timerS'>
 			<p class = 'cardtime' 	id='hour'></p>
 			<p class = 'break' 		id='break1'>:</p>
 			<p class = 'cardtime' 	id='minute'></p>
@@ -28,26 +28,39 @@
 		</div>
 
 		<div id ='active'>
-			<div  id='inactive_a'>
+			<div id='title_s'>STOPWATCH</div>
+			<div id='active_timerS'>
 				<p class = 'cardtime' 	id='hour_s'>00</p>
 				<p class = 'break' 		id='break1_s'>:</p>
 				<p class = 'cardtime' 	id='minute_s'>00</p>
 				<p class = 'break' 		id='break2_s'>:</p>
 				<p class = 'cardtime' 	id='second_s'>00</p>
 			</div>
-			<div id = 'setting'>
-				<input type='text' id = 'getHour' placeholder='Hour'>
-				<input type='text' id = 'getMin'  placeholder='Min'>
-				<button class = 'setButton' onclick="setWatch('getHour','getMin')">SET</button>
-			</div>
 			<div id = 'function_button'>
 				<button class = 'fButton' onclick="turnOff()">Stop</button>
-				<button class = 'fButton' onclick="turnOn()">Start</button>
+				<button class = 'fButton' id = 'stopB' onclick="turnOn()">Start</button>
 				<button class = 'fButton' onclick="reset()">Reset</button>
 			</div>
-			<div id = 'watch1' onclick="acton('watch1','watch2')"></div>
-			<div id = 'watch2' onclick="acton('watch2','watch1')"></div>
+			
+			<div  id='title_p'>POMODORO</div>
+			<div id='active_timerP'>
+				<p class = 'cardtime' 	id='time_p'>25</p>
+				<p class = 'break' 		id='round_p'>x4 LEFT</p>
+			</div>
+			<div id = 'setting'>
+				<input type='text' id = 'getSession' placeholder='On(M)'>
+				<input type='text' id = 'getBreak'  placeholder='Off(M)'>
+				<input type='text' id = 'getBigbreak'  placeholder='Break(M)'>
+				<button class = 'setButton' onclick="setWatch('getSession','getBreak','getBigbreak')">SET</button>
+			</div>
+			<div id = 'pomodoro_button'>
+				<button class = 'fButton' onclick="pomoStop()">Stop</button>
+				<button class = 'fButton' id = 'startP' onclick="pomoStart()">Start</button>
+				<button class = 'fButton' onclick="pomoReset()">Reset</button>
+			</div>
 		</div>
+		
+		
 	</div>
 	
 	<div class='task' id='KanBan'>
