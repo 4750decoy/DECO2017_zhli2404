@@ -31,10 +31,12 @@ body{
 }
 
 input{
+	margin:0 10px;
+	width:60px;
 	border:2px solid rgba(255,255,255,1.00);
 	box-shadow:0px 0px 5px 0.5px white;
 	border-radius:5px;
-	padding: 10px;
+	padding: 6px;
 	transition:0.6s;
 }
 input:focus{
@@ -42,6 +44,7 @@ input:focus{
 	outline:0;
 	box-shadow:0px 0px 5px 0.5px lightblue;
 }
+
 
 
 
@@ -147,8 +150,43 @@ input:focus{
 	display:inline-block;
 	border-radius:10%
 }
+.setButton{
+	color:white;
+	background:skyblue;
+	margin:0 10px;
+	width:40px;
+	border:2px solid rgba(255,255,255,1.00);
+	box-shadow:0px 0px 5px 0.5px white;
+	border-radius:5px;
+	padding: 5px;
+	transition:0.6s;
+}
 
+.setButton:hover{
+	color:white;
+	box-shadow:0px 0px 5px 0.5px black;
+	cursor:pointer;
+}
 
+.fButton{
+	color:black;
+	background:lightgreen;
+	margin:0 10px;
+	height:65px;
+	width:65px;
+	margin:0 30px	;
+	border:2px solid rgba(255,255,255,1.00);
+	box-shadow:0px 0px 5px 0.5px white;
+	border-radius:50%;
+	transition:0.6s;
+}
+
+.fButton:hover{
+	border:2px solid rgba(50,50,50,1.00);
+	color:white;
+	box-shadow:0px 0px 5px 0.5px white;
+	cursor:pointer;
+}
 
 
 
@@ -200,7 +238,7 @@ input:focus{
 	left:0;
 	bottom:0;
 	right:0;
-	margin:500px auto 0px;
+	margin:180px auto 0px;
 	display:inline-block;
 }
 
@@ -215,7 +253,7 @@ input:focus{
 	left:0;
 	bottom:0;
 	right:0;
-	margin:auto;
+	margin:100px auto 0;
 	display:block;
 } 
 
@@ -272,7 +310,17 @@ input:focus{
 	background:rgba(0,0,0,1);
 }
 
-
+#function_button{
+	text-align:center;
+	height:50px;
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:260px auto 0px;
+	display:inline-block;
+}
 
 
 

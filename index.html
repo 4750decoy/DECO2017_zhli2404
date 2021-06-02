@@ -11,7 +11,7 @@
 <body>
 	<div id='Nav'>
 		<ul>
-			<li><a id='home' href='#timer' 	onclick ="changebox('timer')">Timer</a></li>
+			<li><a id='home' href='#timer' 		onclick ="changebox('timer')">Timer</a></li>
 			<li><a id='home' href='#KanBan'		onclick ="changebox('KanBan')">KanBan Board</a></li>
 			<li><a id='home' href='#Reading'	onclick ="changebox('Reading')">Reading List</a></li>
 			<li><a id='home' href='#Music'		onclick ="changebox('Music')">Music Player</a></li>
@@ -29,15 +29,21 @@
 
 		<div id ='active'>
 			<div  id='inactive_a'>
-				<p class = 'cardtime' 	id='hour_s'></p>
+				<p class = 'cardtime' 	id='hour_s'>00</p>
 				<p class = 'break' 		id='break1_s'>:</p>
-				<p class = 'cardtime' 	id='minute_s'></p>
+				<p class = 'cardtime' 	id='minute_s'>00</p>
 				<p class = 'break' 		id='break2_s'>:</p>
-				<p class = 'cardtime' 	id='second_s'></p>
+				<p class = 'cardtime' 	id='second_s'>00</p>
 			</div>
 			<div id = 'setting'>
-				<input>Hour
-				<input>Minute
+				<input type='text' id = 'getHour' placeholder='Hour'>
+				<input type='text' id = 'getMin'  placeholder='Min'>
+				<button class = 'setButton' onclick="setWatch('getHour','getMin')">SET</button>
+			</div>
+			<div id = 'function_button'>
+				<button class = 'fButton' onclick="turnOff()">Stop</button>
+				<button class = 'fButton' onclick="turnOn()">Start</button>
+				<button class = 'fButton' onclick="reset()">Reset</button>
 			</div>
 			<div id = 'watch1' onclick="acton('watch1','watch2')"></div>
 			<div id = 'watch2' onclick="acton('watch2','watch1')"></div>
