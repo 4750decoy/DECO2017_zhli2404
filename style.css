@@ -213,9 +213,6 @@ input:focus{
 
 /*		Define timer default block and others none to show timer first 		*/
 /*      Timer      */
-
-
-
 #inactive_timerS{
 	border-radius:15px;
 	text-align:center;
@@ -229,7 +226,6 @@ input:focus{
 	margin:auto;
 	display:block;
 } 
-
 #active_timerS{
 	border-radius:15px;
 	text-align:center;
@@ -243,7 +239,6 @@ input:focus{
 	margin:120px auto 0;
 	display:block;
 } 
-
 #active_timerP{
 	border-radius:15px;
 	text-align:center;
@@ -257,7 +252,6 @@ input:focus{
 	margin:440px auto 0;
 	display:block;
 } 
-
 #clock{
 	height:100px;
 	width:50px;
@@ -265,15 +259,11 @@ input:focus{
 	font-size:40px;
 	text-shadow:gray 1px 2px 5px;
 }
-
-
-
 #active{
 	display:none;	
 	margin-top:100px;
 	text-align:center;
 }
-
 #title_s{
 	color:black;
 	letter-spacing: 10px;
@@ -288,7 +278,6 @@ input:focus{
 	font-weight: bold;
 	text-shadow: 2px 2px 5px gray;
 }
-
 #title_p{
 	color:black;
 	letter-spacing: 10px;
@@ -303,7 +292,6 @@ input:focus{
 	font-weight: bold;
 	text-shadow: 2px 2px 5px gray;
 }
-
 #function_button{
 	text-align:center;
 	height:50px;
@@ -315,7 +303,6 @@ input:focus{
 	margin:220px auto 0px;
 	display:inline-block;
 }
-
 #pomodoro_button{
 	text-align:center;
 	height:50px;
@@ -327,7 +314,6 @@ input:focus{
 	margin:620px auto 0px;
 	display:inline-block;
 }
-
 #setting{
 	border-radius:15px;
 	text-align:center;
@@ -340,13 +326,11 @@ input:focus{
 	margin:540px auto 0px;
 	display:inline-block;
 }
-
 #round_p{
 	font-size:30px;
 	font-weight: normal;
 	text-shadow: 2px 2px 5px gray;
 }
-
 #time_p{
 	background:red;
 }
@@ -359,10 +343,44 @@ input:focus{
 
 
 
+
+
+/* Kan Ban Style Part */
 #KanBan{
 	display:none;
 	transition: 0.6s;
 }
+
+.kbHead{
+	font-size:15px;
+	height:50px;
+	width:80px;
+	position:relative;
+	top:20px;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:10px;
+	background:white;
+	border-radius: 5px;
+	border:2px solid rgba(255,255,255,1.00);
+	box-shadow:0px 0px 5px 0.5px white;
+	display:inline-block;
+}
+.kbHead:hover{
+	cursor:pointer;
+	background:black;
+	color:white;
+}
+#createB{
+	background:lightgreen;
+	font-weight:bolder;
+	font-size:15px;
+	height:35px;
+	width:35px;
+	border-radius:50%;
+}
+
 
 #Reading{
 	display:none;
