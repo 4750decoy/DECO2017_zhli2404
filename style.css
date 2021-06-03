@@ -382,6 +382,78 @@ input:focus{
 }
 
 
+#kbNew{
+	font-size:15px;
+	height:78%;
+	width:260px;
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:150px 0px 0px 50px;
+	border-radius: 5px;
+	border:2px solid rgba(253,140,142,1.00);
+	box-shadow:0px 0px 5px 0.5px white;
+	float:left;
+}
+
+
+
+.infoBoard{
+	height:100px;
+	width:100%;
+	position:relative;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:0px 0px 0px 0px;
+	display:block;
+}
+
+.infoBoard input{
+	width:80%;
+	position:relative;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:10px auto auto;
+	text-align:center;
+	display:block;
+}
+.infoBoard text{
+	width:80%;
+	position:relative;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:10px auto auto;
+	display:block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #Reading{
 	display:none;
 	transition: 0.6s;

@@ -64,9 +64,34 @@
 	</div>
 	
 	<div class='task' id='KanBan'>
-		<button class = 'kbHead' >Task List</button>
-		<button class = 'kbHead' id = 'createB' onclick = 'newCol()'>+</button>
+		<div id = 'kbTitle'>
+			<button class = 'kbHead' >Task List</button>
+			<button class = 'kbHead' id = 'createB' onclick = 'newCol()'>+</button>
+		</div>
 		
+		<div id = 'kbNew'>
+			<div class = 'infoBoard' id = 'taskName'>
+				<text>Enter Task Name :</text>
+				<input type='text' id = 'nameEntry' placeholder='Type Here'>
+			</div>
+			
+			<div class = 'infoBoard' id = 'taskDate'>
+				<text>Select Due Date :</text>
+				<input type='datetime-local' id = 'dateEntry' placeholder='Type Here'>
+			</div>
+			
+			<div class = 'infoBoard' id = 'taskTime'>
+				<text>Enter EST :</text>
+				<input type='number' id = 'timeEntry' placeholder='Type Here'>
+			</div>
+			
+			<div class = 'infoBoard' id = 'taskStatu'>
+				<text>Check Status :</text>
+				<input type='checkbox' id = 'statusEntry' placeholder='Type Here'>Done<br>
+			</div>
+			
+			<button>Submit</button>
+		</div>
 	</div>
 
 	<div class='task' id='Reading'>

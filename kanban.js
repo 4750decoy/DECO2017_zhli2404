@@ -5,5 +5,5 @@ function newCol(){
 	var add = document.getElementById('createB');
 	newBut.classList.add('kbHead');
 	newBut.innerHTML = 'hahah';
-	document.getElementById('KanBan').insertBefore(newBut,add);
+	document.getElementById('kbTitle').insertBefore(newBut,add);
 }
