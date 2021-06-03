@@ -6,7 +6,7 @@ let incre = 0;
 
 let pomoS = 25;
 let pomoO = 5;
-let pomoB = 10;
+let pomoB = 30;
 let enSession = pomoS+pomoO;
 let decre = 0;
 let initRound = 4;
@@ -61,26 +61,25 @@ function timeStart(){
 	document.getElementById("second_s").innerHTML = S;
 }
 
-
+//  Set the pomodoro watch to typed value when set is clicked //
 function setWatch(id1,id2,id3){
-	if(pomoS > 300 || pomoS < 10){
+	//Check if the time exceed the recommended range//
+	if(document.getElementById(id1).value > 300 || document.getElementById(id1).value < 10){
 		alert('Value Range 10-300');
-		if (document.getElementById(id1).value.length >0){
-			pomoS = document.getElementById(id1).value;
-		} 
+	}else{
+		pomoS = document.getElementById(id1).value;
 	}
-	if(pomoO > 30 || pomoO < 5){
+	if(document.getElementById(id2) > 30 || document.getElementById(id2) < 5){
 		alert('Value Range 5-30');
-		if (document.getElementById(id2).value.length >0){
-			pomoO = document.getElementById(id2).value;
-		}
+	}else{
+		pomoO = document.getElementById(id2).value;
 	}
-	if(pomoB > 120 || pomoB < 20){
+	if(document.getElementById(id3).value > 120 || document.getElementById(id3).value < 20){
 		alert('Value Range 20-120');
-		if (document.getElementById(id3).value.length >0){
-			pomoB = document.getElementById(id3).value;
-		}
+	}else{
+		pomoB = document.getElementById(id3).value;
 	}
+	//  Incase bugs, single digit could still appear as 00 format  //
 	if (pomoS.length<2){
 		pomoS = '0'+pomoS;
 	};
@@ -90,30 +89,38 @@ function setWatch(id1,id2,id3){
 	if (pomoB.length<2){
 		pomoB = '0'+pomoB;
 	};
+	enSession = Number(pomoS) + Number(pomoO);
 	document.getElementById("time_p").innerHTML = pomoS;
 }
 
+
+// Reduce the time in pomodoro by 1 miniutes 60000. //
 function timeReduce(){
+	//  if the pomodoro on and off session is still running, keep the color and counting in the same style  //
 	if (enSession == 00){
 		if(initRound > 1){
 			initRound -= 1;
 			enSession = Number(pomoS)+Number(pomoO);
 			document.getElementById('time_p').style.background = 'red';
 		}
+		// All sessions of on and off run out, take a big break   //
 		else if(initRound == 1){
 			initRound -= 1;
 			enSession = Number(pomoB);
 			document.getElementById('time_p').style.background = 'green'
 		}
+		// Big break over, stop the function by pomoreset //
 		else if(initRound == 0){
 			alert('Session End. Congrates!');
 			document.getElementById('time_p').style.background = 'red';
 			pomoReset();
 		}
 	}
+	//  enSession is the total session time, in web browser, show the actual working session time by reduce off time //
 	if (initRound > 0 && enSession > Number(pomoO)){
 		document.getElementById("time_p").innerHTML = enSession - Number(pomoO);
 	}
+	// Showing the off time //
 	if (initRound > 0 && enSession <= Number(pomoO)){
 		document.getElementById('time_p').style.background = 'orange';
 		document.getElementById("time_p").innerHTML = enSession;
@@ -164,6 +171,7 @@ function reset(){
 
 function pomoStart(){
 	decre = 1;
+	state = 'on'
 	document.getElementById('startP').style.background = 'orange';
 	document.getElementById('startP').innerHTML = 'On';
 
@@ -176,6 +184,7 @@ function pomoStop(){
 }
 
 function pomoReset(){
+	state = 'off';
 	pomoS = 25;
 	pomoO = 5;
 	pomoB = 30;
@@ -186,6 +195,6 @@ function pomoReset(){
 	document.getElementById('startP').innerHTML = 'Start';
 }
 
-window.setInterval('timeReduce()',1000)
+window.setInterval('timeReduce()',100)
 window.setInterval('getTime()',1000);
 window.setInterval('timeStart()',1000);
