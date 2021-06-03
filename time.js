@@ -4,10 +4,10 @@ let initM = 0;
 let initS = 0;
 let incre = 0;
 
-let pomoS = 15;
+let pomoS = 25;
 let pomoO = 5;
 let pomoB = 10;
-let enSession = 20;
+let enSession = pomoS+pomoO;
 let decre = 0;
 let initRound = 4;
 //  Get time in xx:xx:xx format  //
@@ -63,19 +63,23 @@ function timeStart(){
 
 
 function setWatch(id1,id2,id3){
-	var t = new Date();
-	pomoS = document.getElementById(id1).value;
-	pomoO = document.getElementById(id2).value;
-	pomoB = document.getElementById(id3).value;
-	enSession = Number(pomoS) + Number(pomoO);
 	if(pomoS > 300 || pomoS < 10){
-		alert('Value Range 10-300')
+		alert('Value Range 10-300');
+		if (document.getElementById(id1).value.length >0){
+			pomoS = document.getElementById(id1).value;
+		} 
 	}
 	if(pomoO > 30 || pomoO < 5){
-		alert('Value Range 5-30')
+		alert('Value Range 5-30');
+		if (document.getElementById(id2).value.length >0){
+			pomoO = document.getElementById(id2).value;
+		}
 	}
 	if(pomoB > 120 || pomoB < 20){
-		alert('Value Range 20-120')
+		alert('Value Range 20-120');
+		if (document.getElementById(id3).value.length >0){
+			pomoB = document.getElementById(id3).value;
+		}
 	}
 	if (pomoS.length<2){
 		pomoS = '0'+pomoS;
@@ -182,6 +186,6 @@ function pomoReset(){
 	document.getElementById('startP').innerHTML = 'Start';
 }
 
-window.setInterval('timeReduce()',100)
+window.setInterval('timeReduce()',1000)
 window.setInterval('getTime()',1000);
 window.setInterval('timeStart()',1000);
