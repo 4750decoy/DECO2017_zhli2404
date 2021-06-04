@@ -45,7 +45,15 @@ input:focus{
 	outline:0;
 	box-shadow:0px 0px 5px 0.5px lightblue;
 }
-
+select{
+	margin:10px 10px;
+	width:80px;
+	border:2px solid rgba(255,255,255,1.00);
+	box-shadow:0px 0px 5px 0.5px white;
+	border-radius:5px;
+	padding: 6px;
+	transition:0.6s;
+}
 
 
 
@@ -435,12 +443,55 @@ input:focus{
 }
 
 
+#kbView{
+	font-size:15px;
+	height:78%;
+	width:600px;
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:150px 0px 0px 350px;
+	border-radius: 5px;
+	border:2px solid rgba(253,140,142,1.00);
+	box-shadow:0px 0px 5px 0.5px white;
+}
 
+#taskView{
+	font-size:15px;
+	height:78%;
+	width:600px;
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:150px 0px 0px 350px;
+	border-radius: 5px;
+	border:2px solid rgba(253,140,142,1.00);
+	box-shadow:0px 0px 5px 0.5px white;
+}
 
-
-
-
-
+.taskBar{
+	width:80%;
+	height:50px;
+	line-height:50px;
+	border-radius:25px;
+	position:relative;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:30px auto auto;
+	display:block;
+	text-align:left;
+	color:white;
+	background:skyblue;
+	border:2px solid rgba(255,255,255,1.00);
+	box-shadow:0px 0px 5px 0.5px white;
+	transition:0.6s;
+}
 
 
 
