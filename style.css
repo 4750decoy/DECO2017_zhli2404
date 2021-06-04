@@ -478,7 +478,9 @@ select{
 	box-shadow:0px 0px 5px 0.5px skyblue;
 	transition:0.6s;
 }
-
+.taskBar:hover{
+	cursor:pointer;
+}
 
 
 

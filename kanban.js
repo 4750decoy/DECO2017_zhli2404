@@ -1,6 +1,8 @@
 // JavaScript Document
 
 
+var dragsave = 0;
+var dragenter = 0;
 //  Setting the title row to be able to create new element to make multiple columns  //
 function newCol(){
 	var newBut = document.createElement('button');
@@ -32,17 +34,50 @@ function newRow(){
 
 		localStorage.setItem(name,set);
 
-		document.getElementById('task1').innerHTML = 'your';
 		//  new rows should be in the last when created //
 		var row = document.createElement('div');
-		var lastRow = document.getElementById('task1');
-		row.classList.add('taskBar');
 		row.innerHTML = '&nbsp &nbsp '+String(name)+'&nbsp &nbsp '+String(date)+'&nbsp &nbsp '+String(est)+'&nbsp &nbsp '+String(statu)+'&nbsp &nbsp '+String(prio);
 		document.getElementById('kbView').appendChild(row);
+		row.id = name;
+		row.classList.add('taskBar');
+		row.draggable = 'true';
+		
+		
+		//  Adding Drag Event  //
+		row.addEventListener('dragstart',function(event){
+			dragsave = row;
+		});
+		
+		
+		//  Record the event target and move it afterwards  //
+		row.addEventListener('dragenter',function(event){
+			dragenter = row;
+			event.preventDefault();
+			document.getElementById('kbView').insertBefore(dragsave,this.nextSibling);
+		});
+		
+		row.addEventListener('dragleave',function(event){
+			event.preventDefault();
+			document.getElementById('kbView').insertBefore(dragsave,dragenter);
+		});
+
+		
+		
+		
+
 	}else{
 		alert("Do not left the blank empty");
 	}
-
+	
+	
+	// Make color change according to priority //
+	if (prio == 'Low'){
+		row.style.background = 'lightgreen';
+	}else if (prio == 'Medium'){
+		row.style.background = 'orange';
+	}else if (prio == 'High'){
+		row.style.background = 'red';
+	}
 }
 
 
