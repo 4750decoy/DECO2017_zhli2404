@@ -10,24 +10,35 @@ var dragenter = 0;
 var defpage = 'homepage';
 var tempTask = 0;
 //  Setting the title row to be able to create new element to make multiple columns  //
+function reset(){
+	defpage = 'homepage';
+	$('.kbHead').css({background : 'white',color : 'black'});
+	document.getElementById('homepage').style.background = 'black';
+	document.getElementById('homepage').style.color = 'white';
+	getAll();
+}
+
+
 function newCol(){
 	var newBut = document.createElement('button');
 	var add = document.getElementById('createB');
 	add.style.display = 'inline-block';
 	newBut.classList.add('kbHead');
 	newBut.innerHTML = 'Page'+String(colum);
+	newBut.id = String(colum);
+	newBut.onclick = function(){
+		
+		defpage = newBut.innerHTML;
+		$('.kbHead').css({background : 'white',color : 'black'});
+		newBut.style.background = 'black';
+		newBut.style.color = 'white';
+		console.log(defpage);
+		getAll();
+	};
 	// add the new tab(column) to the right before the add button //
 	document.getElementById('kbTitle').insertBefore(newBut,add);
 	colum += 1;
 }
-
-
-
-
-
-
-
-
 
 // Add new task rows  //
 function newRow(){
@@ -56,7 +67,7 @@ function newRow(){
 	}
 	
 	
-	// Make color change according to priority //
+	// refresh page calling getALL() //
 	getAll();
 	
 }
@@ -66,23 +77,37 @@ function newRow(){
 
 
 function getAll(){
+	
+	// When calling geAll function clear out all the displayed div and recreate a new set //
 	document.getElementById('kbView').innerHTML ='';
+	
+	
+	// Check for localStorage length  //
 	var storeLen = localStorage.length;
 	for (var i = 0; i < storeLen;i++){
 		var getkey = localStorage.key(i);
 		var getvalue = localStorage.getItem(getkey);
 		var data = JSON.parse(getvalue);
-		if (data.spage == 'homepage'){
+		
+		
+		//  Check over column names //
+		if (defpage == 'homepage'){
 			var row = document.createElement('div');
+			
+			
+			// Showing the detail of tasks //
 			row.innerHTML = ' &nbsp &nbsp '+String(data.sprio)+'&nbsp &nbsp &nbsp'+String(data.sdate)+'&nbsp &nbsp &nbsp'+String(data.sname)+'&nbsp &nbsp &nbsp EST: '+String(data.sest)+'&nbsp &nbsp &nbsp'+String(data.sstatu);
 			document.getElementById('kbView').appendChild(row);
+			
+			
+			
+			// Add details //
 			row.id = data.sname;
 			row.classList.add('taskBar');
 			row.draggable = 'true';
 			//  Adding Drag Event  //
 			row.addEventListener('dragstart',function(event){
 				dragsave = event.target;
-				console.log(dragsave);		
 			});
 			//  Record the event target and move it afterwards  //
 			row.addEventListener('dragenter',function(event){
@@ -94,6 +119,9 @@ function getAll(){
 				event.preventDefault();
 				document.getElementById('kbView').insertBefore(dragsave,dragenter);
 			});
+			
+			
+			// Make sure color changes accordingly //
 			if (data.sprio == 'Low'){
 				row.style.background = 'lightgreen';
 			}else if (data.sprio == 'Medium'){
@@ -101,21 +129,38 @@ function getAll(){
 			}else if (data.sprio == 'High'){
 				row.style.background = 'red';
 			}
+		}else{
+			//  Only the homepage (defualt task list page) can show all tasks, other pages show categorized tasks only //
+			if (data.spage == defpage){
+				var row = document.createElement('div');
+				row.innerHTML = ' &nbsp &nbsp '+String(data.sprio)+'&nbsp &nbsp &nbsp'+String(data.sdate)+'&nbsp &nbsp &nbsp'+String(data.sname)+'&nbsp &nbsp &nbsp EST: '+String(data.sest)+'&nbsp &nbsp &nbsp'+String(data.sstatu);
+				document.getElementById('kbView').appendChild(row);
+				row.id = data.sname;
+				row.classList.add('taskBar');
+				row.draggable = 'true';
+				row.addEventListener('dragstart',function(event){
+					dragsave = event.target;
+				});
+				row.addEventListener('dragenter',function(event){
+					dragenter = event.target;
+					event.preventDefault();
+					document.getElementById('kbView').insertBefore(dragsave,event.target.nextSibling);
+				});
+				row.addEventListener('dragleave',function(event){
+					event.preventDefault();
+					document.getElementById('kbView').insertBefore(dragsave,dragenter);
+				});
+				if (data.sprio == 'Low'){
+					row.style.background = 'lightgreen';
+				}else if (data.sprio == 'Medium'){
+					row.style.background = 'orange';
+				}else if (data.sprio == 'High'){
+					row.style.background = 'red';
+				}
+			}
 		}
 	}
 }
-
-
-function eventAtt(){
-	for (var i = 0; i < localStorage.length; i++){
-		var getkey = localStorage.key(i);
-		var getvalue = localStorage.getItem(getkey);
-		var id = JSON.parse(getvalue).sname;
-		console.log(id);
-
-	}
-}
-
 
 
 
