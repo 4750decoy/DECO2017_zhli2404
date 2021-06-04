@@ -27,14 +27,29 @@ function newCol(){
 	newBut.innerHTML = 'Page'+String(colum);
 	newBut.id = String(colum);
 	newBut.onclick = function(){
-		
 		defpage = newBut.innerHTML;
 		$('.kbHead').css({background : 'white',color : 'black'});
 		newBut.style.background = 'black';
 		newBut.style.color = 'white';
-		console.log(defpage);
 		getAll();
 	};
+	newBut.ondragover = function(){
+		event.preventDefault();
+	};
+	
+	newBut.ondrop = function(){
+		event.preventDefault();
+		var dropbox = JSON.parse(localStorage.getItem(dragsave.id));
+		var name = dropbox.sname;
+		var date = dropbox.sdate;
+		var est =  dropbox.sest;
+		var statu = dropbox.sstatu;
+		var prio = dropbox.sprio;
+		var set = {sname:name, sdate:date, sest:est, sstatu:statu, sprio:prio, spage:('Page'+newBut.id)};
+		localStorage.setItem(name,JSON.stringify(set));
+		getAll();
+	};
+	
 	// add the new tab(column) to the right before the add button //
 	document.getElementById('kbTitle').insertBefore(newBut,add);
 	colum += 1;
