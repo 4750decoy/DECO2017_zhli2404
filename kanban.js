@@ -40,21 +40,25 @@ function newRow(){
 	var page = defpage;
 	
 	
-	if (name.length>0 && date.length>0 && est.length>0 && statu.length>0 && prio.length>0){
+	if (name.length>0 && date.length>0 && est.length>0 && statu.length>0 && prio.length>0 && localStorage.getItem(name) == null){
 		//  call createData function to create localstorage (could be session storage to clearout, but prototype need to use one)  //
 		var set = {sname:name,sdate:date,sest:est,sstatu:statu,sprio:prio,spage:page};
 		//   LocalStorage can save paire of strings, when storing Object, we can store them using JSON and using parse to retrieve//
 		localStorage.setItem(name,JSON.stringify(set));  // This method is studied at https://www.jianshu.com/p/9d06304d35b7  //
+		
+		
 
 		//  new rows should be in the last when created //
+	}else if(localStorage.getItem(name) != null){
+		alert("Repeating Task Name");
 	}else{
 		alert("Do not left the blank empty");
 	}
 	
 	
 	// Make color change according to priority //
-
 	getAll();
+	
 }
 
 
@@ -62,6 +66,7 @@ function newRow(){
 
 
 function getAll(){
+	document.getElementById('kbView').innerHTML ='';
 	var storeLen = localStorage.length;
 	for (var i = 0; i < storeLen;i++){
 		var getkey = localStorage.key(i);
@@ -74,21 +79,17 @@ function getAll(){
 			row.id = data.sname;
 			row.classList.add('taskBar');
 			row.draggable = 'true';
-
-
 			//  Adding Drag Event  //
 			row.addEventListener('dragstart',function(event){
-				dragsave = row;
+				dragsave = event.target;
+				console.log(dragsave);		
 			});
-
-
-				//  Record the event target and move it afterwards  //
+			//  Record the event target and move it afterwards  //
 			row.addEventListener('dragenter',function(event){
-				dragenter = row;
+				dragenter = event.target;
 				event.preventDefault();
-				document.getElementById('kbView').insertBefore(dragsave,this.nextSibling);
+				document.getElementById('kbView').insertBefore(dragsave,event.target.nextSibling);
 			});
-
 			row.addEventListener('dragleave',function(event){
 				event.preventDefault();
 				document.getElementById('kbView').insertBefore(dragsave,dragenter);
@@ -103,6 +104,18 @@ function getAll(){
 		}
 	}
 }
+
+
+function eventAtt(){
+	for (var i = 0; i < localStorage.length; i++){
+		var getkey = localStorage.key(i);
+		var getvalue = localStorage.getItem(getkey);
+		var id = JSON.parse(getvalue).sname;
+		console.log(id);
+
+	}
+}
+
 
 
 
@@ -124,14 +137,6 @@ document.getElementById('delArea').addEventListener('dragover',function(event){
 document.getElementById('delArea').addEventListener('drop',function(event){
 	event.preventDefault();
 	dragsave.remove();
+	localStorage.removeItem(dragsave.id);
 });
 
-
-/*function getAll(){
-	var storeLen = localStorage.length;
-	for (i = 0; i < storeLen;i++){
-		var getkey = localStorage.key(i);
-		var getvalue = localStorage.getItem(getkey);
-	}
-}
-*/
