@@ -11,10 +11,10 @@
 <body>
 	<div id='Nav'>
 		<ul>
-			<li><a id='home' href='#Timer' 		onclick ="changebox('Timer')">Timer</a></li>
-			<li><a id='home' href='#KanBan'		onclick ="changebox('KanBan')">KanBan Board</a></li>
-			<li><a id='home' href='#Reading'	onclick ="changebox('Reading')">Reading List</a></li>
-			<li><a id='home' href='#Music'		onclick ="changebox('Music')">Music Player</a></li>
+			<li><a  href='#Timer' 		onclick ="changebox('Timer')">Timer</a></li>
+			<li><a  href='#KanBan'		onclick ="changebox('KanBan')">KanBan Board</a></li>
+			<li><a  href='#Reading'	onclick ="changebox('Reading')">Reading List</a></li>
+			<li><a  href='#Music'		onclick ="changebox('Music')">Music Player</a></li>
 		</ul>
 	</div>
 	
@@ -65,8 +65,11 @@
 	
 	<div class='task' id='KanBan'>
 		<div id = 'kbTitle'>
-			<button class = 'kbHead' >Task List</button>
+			<button class = 'kbHead' id = 'homepage'>Task List</button>
 			<button class = 'kbHead' id = 'createB' onclick = 'newCol()'>+</button>
+		</div>
+		
+		<div id = 'delArea'>Drag Here To Delete
 		</div>
 		
 		<div id = 'kbNew'>
