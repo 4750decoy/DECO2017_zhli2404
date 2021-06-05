@@ -1,6 +1,8 @@
 //JavaScript Document
-
 //  Ensure small window size could have fixed nav  //
+sessionStorage.setItem('currentSection','Timer');
+
+
 window.addEventListener('scroll',function(){
 	var nav = document.querySelector('#Nav');
 	nav.classList.toggle('sticky',window.scrollY > 0);
@@ -10,6 +12,7 @@ window.addEventListener('scroll',function(){
 //  hide other boxs  //
 function changebox(id){
 	var box = document.getElementById(id);
+	sessionStorage.setItem('currentSection',id);
 	document.getElementById('Timer').style.display = 'none';
 	document.getElementById('KanBan').style.display = 'none';
 	document.getElementById('Reading').style.display = 'none';

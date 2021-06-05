@@ -541,6 +541,76 @@ select{
 	display:none;
 	transition: 0.6s;
 }
+#linkboard{
+	font-size:15px;
+	height:55%;
+	width:90%;
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:150px auto 0 auto;
+	border-radius: 5px;
+	box-shadow:0px 0px 5px 2px white;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+#addboard{
+	font-size:15px;
+	height:15%;
+	width:90%;
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:620px auto 0 50px;
+	border-radius: 5px;
+	box-shadow:0px 0px 5px 2px white;
+}
+#inputArea{
+	width:70%;
+	height: 90%;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	position:absolute;
+	margin: auto 0 auto 10px
+}
+
+#inputArea input{
+	width:95%;
+	height:42%;
+	margin:5px;
+}
+#addButton{
+	width:12%;
+	height: 90%;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	position:absolute;
+	margin: auto 15% auto auto;
+
+}
+#openButton{
+	background:pink;
+	width:12%;
+	height: 90%;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	position:absolute;
+	margin: auto 10px auto auto;
+}
+
+
+
+
 
 #Music{
 	display:none;

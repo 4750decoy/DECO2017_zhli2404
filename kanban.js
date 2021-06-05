@@ -9,8 +9,10 @@ var dragtype = 0;
 
 
 var defpage = 'homepage';
+
 var tempTask = 0;
 //  Setting the title row to be able to create new element to make multiple columns  //
+
 function reset(){
 	defpage = 'homepage';
 	$('.Head').css({background : 'white',color : 'black'});
@@ -20,12 +22,17 @@ function reset(){
 }
 
 
-function newCol(){
+function newCol(local){
 	var newBut = document.createElement('button');
 	var add = document.getElementById('createB');
 	add.style.display = 'inline-block';
 	newBut.classList.add('Head');
-	newBut.innerHTML = 'Page'+String(colum);
+	if (local.length > 0){
+		newBut.innerHTML = local;
+	}else{
+		newBut.innerHTML = 'Page'+String(colum);
+	}
+	
 	newBut.id = newBut.innerHTML;
 	
 	
@@ -46,7 +53,8 @@ function newCol(){
 					var est =  dropbox.sest;
 					var statu = dropbox.sstatu;
 					var prio = dropbox.sprio;
-					var set = {sname:name, sdate:date, sest:est, sstatu:statu, sprio:prio, spage:pageName};
+					var section = dropbox.ssection;
+					var set = {sname:name, sdate:date, sest:est, sstatu:statu, sprio:prio, spage:pageName,ssection:section};
 					localStorage.setItem(name,JSON.stringify(set));
 				}
 			}
@@ -63,6 +71,8 @@ function newCol(){
 		dragtype = 'col';
 		dragsave = event.target;
 	};
+	
+	// Change the style when clicking and change the default page to the selected page  //
 	newBut.onclick = function(){
 		defpage = newBut.innerHTML;
 		$('.Head').css({background : 'white',color : 'black'});
@@ -87,7 +97,8 @@ function newCol(){
 		var est =  dropbox.sest;
 		var statu = dropbox.sstatu;
 		var prio = dropbox.sprio;
-		var set = {sname:name, sdate:date, sest:est, sstatu:statu, sprio:prio, spage:newBut.innerHTML};
+		var section = dropbox.ssection;
+		var set = {sname:name, sdate:date, sest:est, sstatu:statu, sprio:prio, spage:newBut.innerHTML,ssection:section};
 		localStorage.setItem(name,JSON.stringify(set));
 		
 		//  Refresh page after all  //
@@ -107,12 +118,13 @@ function newRow(){
 	var est = document.getElementById('timeEntry').value;
 	var statu = document.getElementById('statusEntry').value;
 	var prio = document.getElementById('prioEntry').value;
+	var section = 'task';
 	var page = defpage;
 	
 	
 	if (name.length>0 && date.length>0 && est.length>0 && statu.length>0 && prio.length>0 && localStorage.getItem(name) == null){
 		//  call createData function to create localstorage (could be session storage to clearout, but prototype need to use one)  //
-		var set = {sname:name,sdate:date,sest:est,sstatu:statu,sprio:prio,spage:page};
+		var set = {sname:name,sdate:date,sest:est,sstatu:statu,sprio:prio,spage:page,ssection:section};
 		//   LocalStorage can save paire of strings, when storing Object, we can store them using JSON and using parse to retrieve//
 		localStorage.setItem(name,JSON.stringify(set));  // This method is studied at https://www.jianshu.com/p/9d06304d35b7  //
 		
@@ -133,6 +145,23 @@ function newRow(){
 
 
 
+//  Reading List Board Adding new links   //
+function newLink(){
+	var source = document.getElementById('sourceName').value;
+	var link = document. getElementById('linkAddress').value;
+	var section = 'reading';
+	
+	if (source.length > 0  && link.length > 0){
+		var set = {rsource: source, rlink: link, rsection:section}
+		localStorage.setItem(source,JSON.stringify(set));
+	}else{
+		alert('some errors occured, but i have no idea what happened');
+	}
+	getAll();
+}
+
+
+
 
 
 function getAll(){
@@ -140,16 +169,23 @@ function getAll(){
 	// When calling geAll function clear out all the displayed div and recreate a new set //
 	document.getElementById('kbView').innerHTML ='';
 	
+	var kanbanpage = new Array();
+	
 	
 	// Check for localStorage length  //
 	var storeLen = localStorage.length;
 	for (var i = 0; i < storeLen;i++){
 		var getkey = localStorage.key(i);
 		var getvalue = localStorage.getItem(getkey);
-		
+		console.log(1);
 		//  Stored data should use JSON to pass to strings  //
 		var data = JSON.parse(getvalue);
 		
+		console.log(2);
+		
+		if (kanbanpage.indexOf(data.spage) == -1){
+			kanbanpage.push(data.spage);
+		}
 		
 		//  Check over column names //
 		if (defpage == 'homepage'){
@@ -229,6 +265,13 @@ function getAll(){
 					row.style.background = 'red';
 				}
 			}
+		}
+	}
+	
+	// When refreshing pages localstorage should have all the previous pages ready. //
+	for (var i = 0; i < kanbanpage.length; i++){
+		if (document.getElementById(kanbanpage[i]) == null){
+			newCol(kanbanpage[i]);
 		}
 	}
 }

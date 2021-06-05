@@ -66,7 +66,7 @@
 	<div class='task' id='KanBan'>
 		<div class = 'headrow' id = 'kbTitle'>
 			<button class = 'Head' id = 'homepage' onclick ='reset()'>Task List</button>
-			<button class = 'addbut' id = 'createB' onclick = 'newCol()'>+</button>
+			<button class = 'addbut' id = 'createB' onclick = 'newCol("")'>+</button>
 		</div>
 		
 		<div class = 'delete' id = 'delArea'>Drag Here To Delete
@@ -115,8 +115,24 @@
 		
 		<div class = 'headrow' id = 'rdTitle'>
 			<button class = 'Head' id = 'rdhead' onclick ='reset()'>All Book</button>
-			<button class = 'addbut' id = 'creatR' onclick ='newCol()'>+</button>
+			<button class = 'addbut' id = 'creatR' onclick ='newCol('')'>+</button>
 		</div>
+		
+		<div id = 'linkboard'>
+		</div>
+		
+		<div id = 'addboard'>
+			<div id = 'inputArea'>
+				<input id = 'sourceName' placeholder="Name">
+				<input id = 'linkAddress' placeholder="Link">
+			</div>
+			
+			<button class = 'setButton' id = 'addButton' onclick = 'newLink()'>Add Link</button>
+			<button class = 'setButton' id = 'openButton'>Open All</button>
+
+		</div>
+		
+		
 	</div>
 	
 	<div class='task' id='Music'>
