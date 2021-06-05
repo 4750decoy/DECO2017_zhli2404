@@ -359,7 +359,7 @@ select{
 	transition: 0.6s;
 }
 
-#kbTitle{
+.headrow{
 	width:600px;
 	height:100px;
 	position:absolute;
@@ -373,7 +373,7 @@ select{
 
 }
 
-#delArea{
+.delete{
 	border:2px dashed pink;
 	width:260px;
 	height:100px;
@@ -387,7 +387,7 @@ select{
 }
 
 
-.kbHead{
+.Head{
 	font-size:15px;
 	height:50px;
 	width:80px;
@@ -403,7 +403,7 @@ select{
 	box-shadow:0px 0px 5px 0.5px white;
 	display:inline-block;
 }
-.kbHead:hover{
+.Head:hover{
 	cursor:pointer;
 	background:black;
 	color:white;
@@ -412,13 +412,27 @@ select{
 	background:black;
 	color:white;
 }
-#createB{
+.addbut{
+	position:relative;
+	top:20px;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:10px;
+	border:2px solid rgba(255,255,255,1.00);
+	box-shadow:0px 0px 5px 0.5px white;
+	display:inline-block;
 	background:lightgreen;
 	font-weight:bolder;
 	font-size:15px;
 	height:35px;
 	width:35px;
 	border-radius:50%;
+}
+.addbut:hover{
+	cursor:pointer;
+	background:rgba(224,255,89,1.00);
+	color:black;
 }
 #kbNew{
 	font-size:15px;

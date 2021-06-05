@@ -64,12 +64,12 @@
 	</div>
 	
 	<div class='task' id='KanBan'>
-		<div id = 'kbTitle'>
-			<button class = 'kbHead' id = 'homepage' onclick ='reset()'>Task List</button>
-			<button class = 'kbHead' id = 'createB' onclick = 'newCol()'>+</button>
+		<div class = 'headrow' id = 'kbTitle'>
+			<button class = 'Head' id = 'homepage' onclick ='reset()'>Task List</button>
+			<button class = 'addbut' id = 'createB' onclick = 'newCol()'>+</button>
 		</div>
 		
-		<div id = 'delArea'>Drag Here To Delete
+		<div class = 'delete' id = 'delArea'>Drag Here To Delete
 		</div>
 		
 		<div id = 'kbNew'>
@@ -80,7 +80,7 @@
 			
 			<div class = 'infoBoard' id = 'taskDate'>
 				<text>Select Due Date :</text>
-				<input type='datetime-local' id = 'dateEntry' placeholder='Type Here'>
+				<input type='date' id = 'dateEntry' placeholder='Type Here'>
 			</div>
 			
 			<div class = 'infoBoard' id = 'taskTime'>
@@ -110,7 +110,13 @@
 	</div>
 
 	<div class='task' id='Reading'>
-		<p>Reading</p>
+		<div class = 'delete' id = 'delcollect'>Drag Here To Delete
+		</div>
+		
+		<div class = 'headrow' id = 'rdTitle'>
+			<button class = 'Head' id = 'rdhead' onclick ='reset()'>All Book</button>
+			<button class = 'addbut' id = 'creatR' onclick ='newCol()'>+</button>
+		</div>
 	</div>
 	
 	<div class='task' id='Music'>
@@ -119,6 +125,7 @@
 <script src="main.js"></script>
 <script src="time.js"></script>
 <script src="kanban.js"></script>
+<script src="Reading.js"></script>
 <script src="jquery.js"></script>
 </body>
 </html>
