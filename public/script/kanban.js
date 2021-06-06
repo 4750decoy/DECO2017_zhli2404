@@ -182,7 +182,7 @@ function getAll(){
 			
 			
 
-			row.innerHTML = ' &nbsp &nbsp '+String(data.sprio)+'&nbsp &nbsp &nbsp'+String(data.sdate)+'&nbsp &nbsp &nbsp'+String(data.sname)+'&nbsp &nbsp &nbsp EST: '+String(data.sest)+'&nbsp &nbsp &nbsp'+String(data.sstatu);
+			row.innerHTML = ' &nbsp &nbsp '+String(data.sprio)+'&nbsp &nbsp &nbspDue:&nbsp'+String(data.sdate)+'&nbsp &nbsp &nbsp'+String(data.sname)+'&nbsp &nbsp &nbsp EST: '+String(data.sest)+'&nbsp H &nbsp &nbsp &nbsp'+String(data.sstatu);
 			document.getElementById('kbView').appendChild(row);
 			row.id = data.sname;
 			
@@ -224,7 +224,7 @@ function getAll(){
 				var row = document.createElement('div');
 				
 				//  The task infos   //
-				row.innerHTML = ' &nbsp &nbsp '+String(data.sprio)+'&nbsp &nbsp &nbsp'+String(data.sdate)+'&nbsp &nbsp &nbsp'+String(data.sname)+'&nbsp &nbsp &nbsp EST: '+String(data.sest)+'&nbsp &nbsp &nbsp'+String(data.sstatu);
+				row.innerHTML = ' &nbsp &nbsp '+String(data.sprio)+'&nbsp &nbsp &nbspDue:&nbsp'+String(data.sdate)+'&nbsp &nbsp &nbsp'+String(data.sname)+'&nbsp &nbsp &nbsp EST: '+String(data.sest)+'&nbsp H &nbsp &nbsp &nbsp'+String(data.sstatu);
 				document.getElementById('kbView').appendChild(row);
 				
 				

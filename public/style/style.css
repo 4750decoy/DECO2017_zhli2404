@@ -505,6 +505,7 @@ select{
 
 
 .taskBar{
+	font-size:12px;
 	width:80%;
 	height:50px;
 	line-height:50px;
@@ -516,7 +517,6 @@ select{
 	right:0;
 	margin:30px auto auto;
 	display:block;
-	paddin-left:50px;
 	color:black;
 	background:skyblue;
 	box-shadow:0px 0px 5px 0.5px skyblue;
