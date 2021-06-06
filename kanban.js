@@ -1,16 +1,12 @@
 // JavaScript Document
-localStorage.clear();
 var colum  = 1;
-
 
 var dragsave = 0;
 var dragenter = 0;
 var dragtype = 0;
 
-
+var section = 'kanban';
 var defpage = 'homepage';
-
-var tempTask = 0;
 //  Setting the title row to be able to create new element to make multiple columns  //
 
 function reset(){
@@ -118,7 +114,7 @@ function newRow(){
 	var est = document.getElementById('timeEntry').value;
 	var statu = document.getElementById('statusEntry').value;
 	var prio = document.getElementById('prioEntry').value;
-	var section = 'task';
+	var section = 'kanban';
 	var page = defpage;
 	
 	
@@ -146,19 +142,7 @@ function newRow(){
 
 
 //  Reading List Board Adding new links   //
-function newLink(){
-	var source = document.getElementById('sourceName').value;
-	var link = document. getElementById('linkAddress').value;
-	var section = 'reading';
-	
-	if (source.length > 0  && link.length > 0){
-		var set = {rsource: source, rlink: link, rsection:section}
-		localStorage.setItem(source,JSON.stringify(set));
-	}else{
-		alert('some errors occured, but i have no idea what happened');
-	}
-	getAll();
-}
+
 
 
 
@@ -177,29 +161,31 @@ function getAll(){
 	for (var i = 0; i < storeLen;i++){
 		var getkey = localStorage.key(i);
 		var getvalue = localStorage.getItem(getkey);
-		console.log(1);
 		//  Stored data should use JSON to pass to strings  //
 		var data = JSON.parse(getvalue);
 		
-		console.log(2);
-		
-		if (kanbanpage.indexOf(data.spage) == -1){
+		if (kanbanpage.indexOf(data.spage) == -1 && data.ssection == 'kanban'){
 			kanbanpage.push(data.spage);
 		}
 		
 		//  Check over column names //
-		if (defpage == 'homepage'){
+		if (defpage == 'homepage' && data.ssection == 'kanban'){
 			var row = document.createElement('div');
 			
 			
 			// Showing the detail of tasks //
+			
+			
+
 			row.innerHTML = ' &nbsp &nbsp '+String(data.sprio)+'&nbsp &nbsp &nbsp'+String(data.sdate)+'&nbsp &nbsp &nbsp'+String(data.sname)+'&nbsp &nbsp &nbsp EST: '+String(data.sest)+'&nbsp &nbsp &nbsp'+String(data.sstatu);
 			document.getElementById('kbView').appendChild(row);
+			row.id = data.sname;
+			
 			
 			
 			
 			// Add details //
-			row.id = data.sname;
+			
 			row.classList.add('taskBar');
 			row.draggable = 'true';
 			//  Adding Drag Event  //
@@ -229,7 +215,7 @@ function getAll(){
 			}
 		}else{
 			//  Only the homepage (defualt task list page) can show all tasks, other pages show categorized tasks only //
-			if (data.spage == defpage){
+			if (data.spage == defpage && data.ssection == 'kanban'){
 				var row = document.createElement('div');
 				
 				//  The task infos   //

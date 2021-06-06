@@ -516,7 +516,7 @@ select{
 	right:0;
 	margin:30px auto auto;
 	display:block;
-	text-align:left;
+	paddin-left:50px;
 	color:black;
 	background:skyblue;
 	box-shadow:0px 0px 5px 0.5px skyblue;
@@ -607,7 +607,27 @@ select{
 	position:absolute;
 	margin: auto 10px auto auto;
 }
-
+.linkBar{
+	width:80%;
+	height:50px;
+	line-height:50px;
+	border-radius:25px;
+	position:relative;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:30px auto auto;
+	display:block;
+	text-align:left;
+	color:black;
+	background:skyblue;
+	box-shadow:0px 0px 5px 0.5px skyblue;
+	transition:0.6s;
+}
+.linkBar:hover{
+	cursor:pointer;
+}
 
 
 
