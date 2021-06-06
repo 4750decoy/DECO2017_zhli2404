@@ -112,7 +112,12 @@ function newRow(){
 	var name = document.getElementById('nameEntry').value;
 	var date = document.getElementById('dateEntry').value;
 	var est = document.getElementById('timeEntry').value;
-	var statu = document.getElementById('statusEntry').value;
+	if (document.getElementById('statusEntry').checked == true){
+		var statu = 'Finished';
+	}else{
+		var statu = 'Pending'
+	}
+	
 	var prio = document.getElementById('prioEntry').value;
 	var section = 'kanban';
 	var page = defpage;
